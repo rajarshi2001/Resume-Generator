@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Sign Up Page
+{% endblock title %}
+
+{% block content %}
+{% if messages %}
+{% for message in messsages %}
+<p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>
+    {{message}}
+</p>
+{% endfor %}
+{% endif %}
+<form action="" method="POST" novalidate class="shadow p-5 setContainer">
+    <h3 class="text-center fw-bold setHeading">Sign Up Here</h3>
+    {% csrf_token %}
+    {% for st in stud %}
+    <p class="m-3 setLabel">{{st.label_tag}}{{st}} <small class="text-danger">{{st.errors|striptags}}</small></p>
+    {% endfor %}
+    <div class="text-center">
+        <input type="submit" value="Register" class="btn btn-success m-2 px-5">
+        <u><a href="{% url 'login' %}" class="text-decoration-none text-info setLink">Login</a><u>
+    </div>
+    {% if stud.non_field_errors %}
+    {% for error in stud.non_field_errors %}
+    <p class="alert alert-danger my-3">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+</form>
+{% endblock content %}

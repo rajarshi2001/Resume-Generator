@@ -1,0 +1,38 @@
+.setRadius{
+    border-radius: 50%;
+}
+.setImage{
+    border-radius: 50%;
+}
+body{
+    background: url('/static/resume/images/resume_image.jpg');
+    opacity: 0.7;
+    background-size: cover;  
+    background-position: center;
+}
+.setContainer{
+    background: rgb(2, 2, 2);
+    border-radius: 50px;
+}
+.setHeading{
+    color: aliceblue;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: 40px;
+}
+.setLabel{
+    color: white;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+.setLink{
+    font-size: 20px;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+.setTable{
+    background: rgb(2, 2, 2);
+}

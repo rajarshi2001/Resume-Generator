@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{prof.name}}
+{% endblock title%}
+
+{% block content %}
+
+<div class="row setRadius">
+    <h1 class="text-center text-danger fw-bold bg-danger text-dark alert alert-danger shadow "> <i>Resume of {{prof.name}}
+    </i> </h1>
+    <div class="col-sm-3 shadow p-3 bg-primary">
+        <div class="card">
+            <div class="card-body">
+                <img src={{prof.profile_img.url}} alt="" class="img-fluid img-thumbnail mb-2 setImage">
+                <h5 class="text-center fw-bold"><strong><i>{{prof.name}}</i></strong></h5>
+            </div>
+        </div>
+        <div class="list-group my-3">
+            <a href="{% url 'updateProfile' prof.id %}" class="list-group-item text-center fw-bold"><u><i>Update Your Profile</i></u></a>
+            <a href="{% url 'updateEmail' %}" class="list-group-item text-center fw-bold"><u><i>Update Email</i></u></a>
+            <a href="{% url 'changePassword' %}" class="list-group-item text-center fw-bold"><u><i>Change Your Password</i></u></a>
+        </div>
+    </div>
+    <div class="col-sm-9 shadow p-5 bg-secondary">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-center alert alert-danger"> <strong> <i>Personal Information</i></strong> </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">Father: <strong class="text-danger"><i>{{prof.father_name}}</i></strong></h5>
+                        <h5 class="fw-bold">Mother: <strong class="text-danger"><i>{{prof.mother_name}}</i></strong></h5>
+                        <h5 class="fw-bold">Address: <strong class="text-danger"><i>{{prof.address}}</i></strong></h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">Contact No: <strong class="text-danger"><i>{{prof.mobile_no}}</i></strong></h5>
+                        <h5 class="fw-bold">Email: <strong class="text-danger"><i>{{request.user.email}}</i></strong></h5>
+                        <h5 class="fw-bold">Date of Birth: <strong class="text-danger"><i>{{prof.dob}}</i></strong></h5>
+                    </div>
+                </div>
+                <h2 class="text-center alert alert-danger"> <strong><i>Academic Information</i></strong> </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">College: <strong class="text-danger"><i>{{prof.college_name}}</i></strong></h5>
+                        <h5 class="fw-bold">School: <strong class="text-danger"><i>{{prof.school_name}}</i></strong></h5>
+                        <h5 class="fw-bold">Course undertaking: <strong class="text-danger"><i>{{prof.persue_course}}</i></strong></h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">Class 12 aggregate: <strong class="text-danger"><i>{{prof.class_12}} %</i></strong></h5>
+                        <h5 class="fw-bold">Class 10 aggregate : <strong class="text-danger"><i>{{prof.class_10}} %</i></strong> </h5>
+                         <h5 class="fw-bold">Favourable Languages : <strong class="text-danger"><i>{{prof.language}}</i></strong> </h5>
+                    </div>
+                    
+                </div>
+                <h2 class="text-center alert alert-danger"> <strong><i>Technical Skills</i></strong> </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">Programming Languages: <strong class="text-danger"><i>{{skill.code}}</i></strong></h5>
+                        <h5 class="fw-bold">Special Skill: <strong class="text-danger"><i>{{skill.skill_name}}</i></strong></h5>
+                        <h5 class="fw-bold">Internships: <strong class="text-danger"><i>{{intern_exp}}</i></strong></h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="fw-bold">Facebook: <u> <a href="{{skill.facebook}}/" class="text-decoration-none"><strong class="text-danger"><i>{{skill.facebook}} </i></strong></a> </u></h5>
+                        <h5 class="fw-bold">Instagram:<u><a href="{{skill.instagram}}/" class="text-decoration-none"><strong class="text-danger"><i>{{skill.instagram}} </i></strong></a></u></h5>
+                        <h5 class="fw-bold">LinkedIn: <u><a href="{{skill.linkedIn}}/" class="text-decoration-none"><strong class="text-danger"><i>{{skill.linkedIn}} </i></strong></a></u></h5>
+                    </div>
+                    <div class="text-center">
+                        <a href="{% url 'logout'%}" class="btn btn-danger">Log out</a>
+                        <a href="#" class="btn btn-info" id="change">Change Background</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

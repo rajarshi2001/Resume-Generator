@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    {{pi.name}}
+{% endblock title %}
+
+{% block msg %}
+<div class="col-sm-12">
+    <h1 class="text-center fw-bold">Welcome Here {{request.user.first_name}} {{request.user.last_name}}</h1>
+    {% if messages %}
+    {% for message in messsages %}
+    <p {% if message.tags %} class="alert alert-{{message.tags}} text-center" {% endif %}>
+        {{message}}
+    </p>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock msg %}
+
+{% block content %}
+    <form action="" method="POST" novalidate class = 'shadow p-5' enctype="multipart/form-data">
+        <h1 class="text-center alert alert-info">Start Updating Resume of <strong class="text-capitalize">{{pi.name}}</strong></h1>
+        {% csrf_token %}
+        {% for fm in forms %}
+            <p class="m-3">{{fm.label_tag}}{{fm}} <small class="text-danger">{{fm.errors|striptags}}</small></p>
+        {% endfor %}
+        {% for sf in sforms %}
+            <p class="m-3">{{sf.label_tag}}{{sf}}<small class="text-danger">{{sf.errors|striptags}}</small></p>
+        {% endfor %}
+        <div class="text-center">
+            <input type="submit" value="Update" class="btn btn-success m-3">
+            <a href="{% url 'logout' %}" class="text-decoration-done">Log Out</a>
+            <hr>
+            <a href="{% url 'visitProfile' %}" class="text-decoration-done btn btn-info">Check Your Cart</a>
+        </div>
+        {% if forms.non_field_errors %}
+        {% for error in forms.non_field_errors %}
+        <p class="alert alert-danger my-3">{{error}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if sforms.non_field_errors %}
+            {% for error in sforms.non_field_errors %}
+                <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+    </form>
+{% endblock content %}

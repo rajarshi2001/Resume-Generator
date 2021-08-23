@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+    Cart:- {{request.user.first_name}} {{request.user.last_name}}
+{% endblock title %}
+
+{% block content %}
+    <div class="container my-5 ">
+        <i><h2 class="text-center text-danger fw-bold alert alert-danger bg-dark text-white">View Your Resume Cart {{request.user.first_name}} {{request.user.last_name}}</h2></i>
+        <table class="table shadow p-3 text-center setTable">
+            <thead>
+              <tr>
+                <th scope="col" class="setLabel">Candidate</th>
+                <th scope="col" class="setLabel">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in prof %}
+              <tr>
+                <td class="setLabel">{{p.name}}</td>
+                <td>
+                    <a href="{% url 'resumeView' p.id %}" class="text-decoration-none btn btn-success px-5">View</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="text-center">
+            <a href="{% url 'logout' %}" class="text-decoration-none btn btn-danger px-5">Log out</a>
+          </div>
+    </div>
+{% endblock content %}
